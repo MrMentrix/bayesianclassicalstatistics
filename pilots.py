@@ -2,13 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-plot_height = 10
-size = 15 # dot size
-show_ratio = False
-pilots = 10 # total amount of pilots
-cashiers = 100 # total amount of cashiers
-pilot_ratio = 0.9 # amount of pilots fitting the description
-cashier_ratio = 0.4 # amount of cashiers fitting the description
+plot_height = 25
+size = 6 # dot size
+show_ratio = True
+pilots = 100 # total amount of pilots
+cashiers = 1000 # total amount of cashiers
+pilot_ratio = 0.95 # amount of pilots fitting the description
+cashier_ratio = 0.001 # amount of cashiers fitting the description
 
 if plot_height <= 0:
     print("Please enter a plot height that is greater than 0.")
@@ -36,8 +36,8 @@ for i in range(pilots+cashiers): # creating general plot
         cashiers_y.append(i%plot_height+1)
 
 # plot settings
-plt.xticks(np.arange(1, (pilots+cashiers)/plot_height+1, 5)) # make x axis go from 1 to pilots+cashiers
-plt.yticks(np.arange(1, plot_height, 2)) # make y axis go from 1 to 10
+plt.xticks(np.arange(0, (pilots+cashiers)/plot_height+5, 5)) # make x axis go from 1 to pilots+cashiers
+plt.yticks(np.arange(0, plot_height+5, 5)) # make y axis go from 1 to 10
 plt.subplots_adjust(bottom=0.16) # adjust bottom margin
 
 # plotting pilots and cashiers
@@ -58,7 +58,7 @@ if show_ratio:
         cashiers_ratio_y.append(math.floor(i/(cashiers/plot_height))+1)
 
     # plotting pilot and cashier ratios
-    plt.plot(pilots_ratio_x, pilots_ratio_y, marker="o", markersize=size*0.7, linestyle="None", color="green", label="Pilots Ratio")
+    plt.plot(pilots_ratio_x, pilots_ratio_y, marker="o", markersize=size*0.7, linestyle="None", color="pink", label="Pilots Ratio")
     plt.plot(cashiers_ratio_x, cashiers_ratio_y, marker="o", markersize=size*0.7, linestyle="None", color="yellow", label="Cashiers Ratio")
 
 if show_ratio:
